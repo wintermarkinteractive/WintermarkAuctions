@@ -1,0 +1,205 @@
+# ============================================================
+#  Wintermark Auctions - config.yml
+#  Money comes from Wintermark Economy, or any Vault economy.
+#  Prices accept abbreviations: 500, 2.5k, 1m
+#  Texts use MiniMessage: https://docs.advntr.dev/minimessage/format.html
+# ============================================================
+
+# How long a listing stays up (hours). Expired items go to the seller's collection box (/ah collect).
+# Decimals work for testing, e.g. 0.02 = about 1 minute.
+listing-hours: 48
+
+# % of the price the seller pays when listing (not refunded). 0 = free.
+listing-fee-percent: 1
+# % of the price taken from the seller's payout when an item sells (money sink). 0 = none.
+sales-tax-percent: 5
+
+# Max active listings per player. VIP ranks: give wintermark.ah.limit.<n> (e.g. wintermark.ah.limit.10). 0 = no limit.
+max-listings: 5
+
+# Price limits ("0" = no maximum).
+min-price: "1"
+max-price: "0"
+
+# Lines in the "while you were away" sales summary on join.
+offline-summary-lines: 5
+
+# Let players buy their own listings (only useful for testing on a one-player server).
+allow-buy-own: false
+
+# Tell the whole server about every new listing.
+broadcast-new-listings: false
+
+# Materials that can't be sold.
+blocked-items:
+  - BEDROCK
+  - BARRIER
+  - COMMAND_BLOCK
+
+menu:
+  title: "<dark_green><bold>Auction House</bold></dark_green> <dark_gray>(<page>/<pages>)"
+  # Added under the item's own lore. Placeholders: <price> <seller> <time>
+  listing-lore:
+    - ""
+    - "<gray>Price: <gold><price>"
+    - "<gray>Seller: <white><seller>"
+    - "<gray>Ends in: <white><time>"
+    - ""
+    - "<yellow>Click to buy"
+  own-lore:
+    - ""
+    - "<gray>Price: <gold><price>"
+    - "<green>This is your listing"
+    - "<gray>Ends in: <white><time>"
+    - ""
+    - "<yellow>Click to take it back"
+  empty-name: "<gray>Nothing for sale yet"
+  empty-lore:
+    - '<dark_gray>Hold an item and type /ah sell \<price>'
+  prev-name: "<yellow>Previous page"
+  next-name: "<yellow>Next page"
+  title-mine: "<dark_green><bold>My listings</bold></dark_green> <dark_gray>(<page>/<pages>)"
+  no-results-name: "<gray>No listings match"
+  no-results-lore:
+    - "<dark_gray>Change the category or clear the search."
+  # Bottom bar. Placeholders: <category> <sort> <search> <showing> <count> <total>
+  category-name: "<aqua>Category: <white><category>"
+  category-lore:
+    - "<gray>Left-click: next category"
+    - "<gray>Right-click: previous category"
+  sort-name: "<aqua>Sort: <white><sort>"
+  sort-lore:
+    - "<gray>Click to change"
+  search-name: "<aqua>Search"
+  search-lore:
+    - "<gray>Current: <white><search>"
+    - ""
+    - "<gray>Left-click: search by name"
+    - "<gray>Right-click: clear search"
+  search-none: "none"
+  mine-name: "<aqua>My listings"
+  mine-lore:
+    - "<gray>Showing: <white><showing>"
+    - "<gray>Click to switch"
+  showing-mine: "only your listings"
+  showing-all: "everyone's listings"
+  # Added under info-lore. Placeholders: <fee> <tax> <limit> <hours>
+  info-extra:
+    - ""
+    - "<dark_gray>Listing fee <fee>% - sales tax <tax>%"
+    - "<dark_gray>Max <limit> listings - <hours>h each"
+  # Only staff (wintermark.ah.admin) see these lines on listings.
+  staff-lore:
+    - "<red>Staff: shift + right-click to remove"
+  collect-name: "<gold>Collection box"
+  collect-lore:
+    - "<gray>Items waiting: <white><waiting>"
+    - "<dark_gray>Expired, cancelled and removed items"
+  balance-name: "<gold>Your balance"
+  balance-lore:
+    - "<white><balance>"
+  info-name: "<green>Auction House"
+  info-lore:
+    - "<gray>Listings: <white><count>"
+    - "<gray>Your listings: <white><mine>"
+    - ""
+    - '<gray>Sell: hold an item and type'
+    - '<white>/ah sell \<price>'
+
+categories:
+  all: "All items"
+  blocks: "Blocks"
+  tools: "Tools"
+  combat: "Combat"
+  food: "Food"
+  potions: "Potions & Books"
+  misc: "Misc"
+
+sorts:
+  newest: "Newest first"
+  cheapest: "Cheapest first"
+  expensive: "Most expensive first"
+
+search-dialog:
+  title: "<dark_green>Search the Auction House"
+  body: "<gray>Type part of an item name, e.g. <white>diamond</white> or <white>sword</white>.<newline><gray>Leave it empty to show everything."
+  input-label: "Item name"
+  confirm: "<green>Search"
+  cancel: "<gray>Back"
+
+collect:
+  title: "<gold><bold>Collection box</bold></gold> <dark_gray>(<page>/<pages>)"
+  date-format: "MM-dd HH:mm"
+  item-lore:
+    - ""
+    - "<gray>Reason: <white><reason>"
+    - "<dark_gray><date>"
+    - "<yellow>Click to take it"
+  reasons:
+    expired: "Listing expired"
+    cancelled: "Taken back"
+    removed: "Removed by staff"
+    overflow: "Bought (inventory was full)"
+  empty-name: "<gray>Your collection box is empty"
+  empty-lore: []
+  back-name: "<yellow>Back to the auction house"
+  all-name: "<green>Take everything"
+  all-lore:
+    - "<gray>Takes as much as fits in your inventory."
+
+confirm-buy:
+  title: "<dark_green>Buy for <price>?"
+  confirm-name: "<green><bold>Buy for <price>"
+  confirm-lore:
+    - "<gray>Your balance: <white><balance>"
+  back-name: "<red>Back"
+
+confirm-cancel:
+  title: "<dark_red>Take your item back?"
+  confirm-name: "<green><bold>Take it back"
+  confirm-lore:
+    - "<gray>The item goes back into your inventory."
+  back-name: "<red>Back"
+
+messages:
+  prefix: "<dark_gray>[<dark_green>AH</dark_green>]</dark_gray> "
+  help: '<gold><bold>Auction House</bold></gold><newline><gray>/ah <dark_gray>- browse</dark_gray><newline>/ah sell \<price> <dark_gray>- sell the item in your hand</dark_gray>'
+  # Shown under help (own key so older config files get it too).
+  help-extra: '<gray>/ah search [text] <dark_gray>- search by name</dark_gray><newline><gray>/ah my <dark_gray>- your listings</dark_gray>'
+  usage-sell: '<prefix><gray>Usage: <white>/ah sell \<price></white> <dark_gray>(e.g. 500, 2.5k)</dark_gray>'
+  invalid-price: "<prefix><red>'<input>' is not a valid price. <gray>Examples: 500, 2.5k, 1m"
+  sell-empty-hand: "<prefix><red>Hold the item you want to sell in your hand."
+  sell-blocked: "<prefix><red>This item can't be sold on the auction house."
+  sell-failed: "<prefix><red>This item can't be listed. It stays in your inventory."
+  sold-listed: "<prefix><gray>Listed <white><item></white> for <gold><price></gold>."
+  broadcast-listed: "<prefix><yellow><player></yellow> <gray>is selling <white><item></white> for <gold><price></gold>. <dark_gray>/ah"
+  gone: "<prefix><red>That listing is no longer available."
+  buy-own: "<prefix><red>You can't buy your own listing."
+  inventory-full: "<prefix><red>Make room in your inventory first."
+  not-enough: "<prefix><red>You can't afford <price>. <gray>Balance: <gold><balance>"
+  buy-failed: "<prefix><red>The purchase failed and your money was refunded. Please tell staff."
+  bought: "<prefix><gray>You bought <white><item></white> from <yellow><seller></yellow> for <gold><price></gold>."
+  seller-sold: "<prefix><green><buyer></green> <gray>bought your <white><item></white> for <gold><price></gold>."
+  cancelled: "<prefix><gray>Your <white><item></white> is back in your inventory."
+  no-economy: "<prefix><red>The auction house is not ready (no economy found)."
+  no-permission: "<prefix><red>You don't have permission to do that."
+  players-only: "<prefix><red>Only players can use this."
+  sold-listed-fee: "<prefix><gray>Listed <white><item></white> for <gold><price></gold>. <dark_gray>(listing fee <fee>)"
+  price-too-low: "<prefix><red>The minimum price is <min>."
+  price-too-high: "<prefix><red>The maximum price is <max>."
+  limit-reached: "<prefix><red>You already have <limit> listings. Sell or take one back first."
+  fee-not-enough: "<prefix><red>You can't afford the listing fee of <fee>. <gray>Balance: <gold><balance>"
+  seller-sold-tax: "<prefix><green><buyer></green> <gray>bought your <white><item></white> for <gold><price></gold>. You got <gold><payout></gold> <dark_gray>(<tax> tax)"
+  bought-to-collection: "<prefix><yellow>Your inventory was full, so the item went to your collection box. <gray>/ah collect"
+  cancelled-to-collection: "<prefix><gray>Your inventory is full, so <white><item></white> went to your collection box. <gray>/ah collect"
+  expired: "<prefix><gray>Your listing <white><item></white> expired and is waiting in <yellow>/ah collect</yellow>."
+  staff-removed: "<prefix><gray>Removed <white><item></white> by <yellow><seller></yellow>. It went to their collection box."
+  removed-by-staff: "<prefix><red>Staff removed your listing <white><item></white>. <gray>It is waiting in /ah collect."
+  collected-all: "<prefix><green>You took <count> item(s) from your collection box."
+  collected-some: "<prefix><yellow>You took <count> item(s). <left> still waiting: make room and try again."
+  collect-reminder: "<prefix><gray>You have <yellow><waiting></yellow> item(s) waiting in your collection box. <white>/ah collect"
+  offline-header: "<prefix><green>While you were away you sold <white><count></white> item(s) for <gold><total></gold>:"
+  offline-line: "<dark_gray> - <white><item></white> <gray>to <yellow><buyer></yellow> <dark_gray>(+<payout>)"
+  offline-more: "<dark_gray> ...and <more> more. See /money history."
+  help-collect: '<gray>/ah collect <dark_gray>- expired and returned items</dark_gray>'
+  reloaded: "<prefix><green>Config reloaded."

@@ -1,0 +1,21 @@
+name: WintermarkAuctions
+version: '${version}'
+main: io.github.wintermarkinteractive.auctions.AuctionsPlugin
+description: Auction house with a paged menu, buy confirmation and SQLite storage.
+author: Wintermark Interactive
+website: https://github.com/wintermarkinteractive
+api-version: '26.3'
+softdepend: [WintermarkEconomy, Vault]
+permissions:
+  wintermark.ah.use:
+    description: Open the auction house.
+    default: true
+  wintermark.ah.sell:
+    description: Sell items with /ah sell.
+    default: true
+  wintermark.ah.buy:
+    description: Buy items.
+    default: true
+  wintermark.ah.admin:
+    description: /ah reload and removing any listing (shift + right-click in the menu).
+    default: op
